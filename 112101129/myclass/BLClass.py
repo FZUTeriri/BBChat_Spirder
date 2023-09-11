@@ -2,7 +2,6 @@ import time
 import requests
 import json
 import re
-
 class bilibili:
     def __init__(self,bvid='BV17x411w7KC'):
         self.bvid=bvid#bv号
@@ -13,6 +12,7 @@ class bilibili:
               }#请求头
 
     #获取cid
+
     def get_cid(self):
         url="https://api.bilibili.com/x/player/pagelist?bvid="+self.bvid
         res=requests.get(url,self.headers).text#放回json文本
@@ -22,6 +22,7 @@ class bilibili:
         time.sleep(0.1)
 
     #获取弹幕内容
+
     def get_source(self):
         url="https://comment.bilibili.com/"+str(self.cid)+".xml"
         response=requests.get(url,self.headers)#返回xml文件
